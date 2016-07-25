@@ -80,6 +80,7 @@ namespace DynamicMenuItems
             if (matches.Count == 0) return;
 
             var isRootItem = (invokedCommand.MatchedCommandId == 0);
+
             // The index is set to 1 rather than 0 because the Solution.Projects collection is 1-based.
             var indexForDisplay = (isRootItem ? 0 : (invokedCommand.MatchedCommandId - (int)DynamicMenuPackageGuids.DynamicStartCommand));
             var match = matches[indexForDisplay];
@@ -129,8 +130,6 @@ namespace DynamicMenuItems
             var matchCount = this._menuItems.Where(c => c.Item2 == testName).OrderBy(c => c.Item1).Count();
 
             if (matchCount == 0) return false;
-
-            //System.Diagnostics.Debug.WriteLine("Is Valid Dynamic Item -- Command Id: {0}, {1}, {2}", commandId, (int)DynamicMenuPackageGuids.cmdidMyCommand, commandId - (int)DynamicMenuPackageGuids.cmdidMyCommand);
 
             // The match is valid if the command ID is >= the id of our root dynamic start item
             // and the command ID minus the ID of our root dynamic start item
