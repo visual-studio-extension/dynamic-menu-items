@@ -38,11 +38,13 @@
     </Bitmaps>
   </Commands>
 
+<!--
   <CommandPlacements>
     <CommandPlacement guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" priority="0x0600">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS"/>
     </CommandPlacement>
   </CommandPlacements>
+-->
 
   <Symbols>
     <!-- This is the package guid. -->
