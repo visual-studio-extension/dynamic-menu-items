@@ -13,7 +13,7 @@ namespace DynamicMenuItems.Classes
         private List<Tuple<int, string, string>> _menuItems;
 
         public DynamicItemMenuContainer(OleMenuCommandService mcs, EnvDTE80.DTE2 dte, List<Tuple<int, string, string>> menuItems)
-            : base(Callback, new CommandID(Guid.Parse(DynamicMenuPackageGuids.guidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.MyMenuController))
+            : base(Callback, new CommandID(Guid.Parse(DynamicMenuPackageGuids.GuidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.MyMenuController))
         {
             this._dte = dte;
             this._menuItems = menuItems;

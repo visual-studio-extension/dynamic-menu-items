@@ -22,7 +22,7 @@
       </Menu>
     </Menus>
     <Buttons>
-      <Button guid="guidDynamicMenuPackageCmdSet" id="cmdidMyDynamicStartCommand" priority="0x1000" >
+      <Button guid="guidDynamicMenuPackageCmdSet" id="DynamicStartCommand" priority="0x1000" >
         <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" />
         <CommandFlag>DynamicItemStart</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
@@ -58,7 +58,7 @@
       <!-- NOTE: The following command expands at run time to some number of ids.
          Try not to place command ids after it (e.g. 0x0105, 0x0106).
          If you must add a command id after it, make the gap very large (e.g. 0x200) -->
-      <IDSymbol name="cmdidMyDynamicStartCommand" value="0x0104" />
+      <IDSymbol name="DynamicStartCommand" value="0x0104" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{84d382fc-c963-4f5c-97c1-5e703c16407f}" >

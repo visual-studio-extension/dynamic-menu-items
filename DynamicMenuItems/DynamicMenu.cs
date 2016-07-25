@@ -45,7 +45,7 @@ namespace DynamicMenuItems
             if (commandService != null)
             {
                 // Add the DynamicItemMenuCommand for the expansion of the root item into N items at run time.
-                var dynamicItemRootId = new CommandID(new Guid(DynamicMenuPackageGuids.guidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.cmdidMyCommand);
+                var dynamicItemRootId = new CommandID(new Guid(DynamicMenuPackageGuids.GuidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.DynamicStartCommand);
                 this._rootMenuItem = new DynamicItemMenuCommand(dynamicItemRootId,
                     IsValidDynamicItem,
                     OnInvokedDynamicItem,
@@ -81,7 +81,7 @@ namespace DynamicMenuItems
 
             var isRootItem = (invokedCommand.MatchedCommandId == 0);
             // The index is set to 1 rather than 0 because the Solution.Projects collection is 1-based.
-            var indexForDisplay = (isRootItem ? 0 : (invokedCommand.MatchedCommandId - (int)DynamicMenuPackageGuids.cmdidMyCommand));
+            var indexForDisplay = (isRootItem ? 0 : (invokedCommand.MatchedCommandId - (int)DynamicMenuPackageGuids.DynamicStartCommand));
             var match = matches[indexForDisplay];
 
             if (match == null) return;
@@ -93,6 +93,11 @@ namespace DynamicMenuItems
             var message = string.Format(CultureInfo.CurrentCulture, "Woo Hoo, you clicked item {0} - {1}", match.Item1, match.Item3);
             var title = "DynamicMenu";
 
+            ShowDialog(title, message);
+        }
+
+        private void ShowDialog(string title, string message)
+        {
             VsShellUtilities.ShowMessageBox(
                 this.ServiceProvider,
                 message,
@@ -130,7 +135,7 @@ namespace DynamicMenuItems
             // The match is valid if the command ID is >= the id of our root dynamic start item
             // and the command ID minus the ID of our root dynamic start item
             // is less than or equal to the number of projects in the solution.
-            return (commandId >= (int)DynamicMenuPackageGuids.cmdidMyCommand) && ((commandId - (int)DynamicMenuPackageGuids.cmdidMyCommand) < matchCount);
+            return (commandId >= (int)DynamicMenuPackageGuids.DynamicStartCommand) && ((commandId - (int)DynamicMenuPackageGuids.DynamicStartCommand) < matchCount);
         }
 
         private void OnBeforeQueryStatusDynamicItem(object sender, EventArgs args)
@@ -181,7 +186,7 @@ namespace DynamicMenuItems
             var isRootItem = (matchedCommand.MatchedCommandId == 0);
 
             // The index is set to 1 rather than 0 because the Solution.Projects collection is 1-based.
-            var indexForDisplay = (isRootItem ? 0 : (matchedCommand.MatchedCommandId - (int)DynamicMenuPackageGuids.cmdidMyCommand));
+            var indexForDisplay = (isRootItem ? 0 : (matchedCommand.MatchedCommandId - (int)DynamicMenuPackageGuids.DynamicStartCommand));
 
             matchedCommand.Text = matches[indexForDisplay].Item3;
             matchedCommand.MatchedCommandId = 0;
