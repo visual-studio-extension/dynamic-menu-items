@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynamicMenuItems.Classes
 {
@@ -21,7 +19,6 @@ namespace DynamicMenuItems.Classes
             this._menuItems = menuItems;
             mcs.AddCommand(this);
             this.BeforeQueryStatus += DynamicItemMenuContainer_BeforeQueryStatus;
-
         }
 
         private void DynamicItemMenuContainer_BeforeQueryStatus(object sender, EventArgs e)
@@ -39,11 +36,13 @@ namespace DynamicMenuItems.Classes
                 {
                     this.Visible = false;
                     return;
-                } else
+                }
+                else
                 {
                     testName = prj.Name;
                 }
-            } else
+            }
+            else
             {
                 testName = prjItem.Name;
             }
@@ -61,10 +60,6 @@ namespace DynamicMenuItems.Classes
 
         private static void Callback(object sender, EventArgs e)
         {
-            
-
-
         }
-
     }
 }

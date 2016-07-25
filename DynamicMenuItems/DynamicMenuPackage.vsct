@@ -36,16 +36,16 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
-        <!-- The group that adds the MenuController on the Solution Explorer toolbar. 
+      <!-- The group that adds the MenuController on the Solution Explorer toolbar. 
          The 0x4000 priority adds this group after the group that contains the
          Preview Selected Items button, which is normally at the far right of the toolbar. -->
-        <Group guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" priority="0x0600" >
-            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
-        </Group>
-        <!-- The group for the items on the MenuController drop-down. It is added to the MenuController submenu. -->
-        <Group guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" priority="0x0600" >
-            <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuController" />
-        </Group>
+      <Group guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" priority="0x0600" >
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
+      </Group>
+      <!-- The group for the items on the MenuController drop-down. It is added to the MenuController submenu. -->
+      <Group guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" priority="0x0600" >
+        <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuController" />
+      </Group>
     </Groups>
 
     <Menus>
@@ -55,26 +55,26 @@
         <Parent guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-           <ButtonText>Run T4 Item...</ButtonText>
-       </Strings>
+          <ButtonText>Run T4 Item...</ButtonText>
+        </Strings>
       </Menu>
     </Menus>
-    
+
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button
         or combo box in a toolbar. -->
     <Buttons>
-     <Button guid="guidDynamicMenuPackageCmdSet" id="cmdidMyDynamicStartCommand" priority="0x1000" >
-      <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" />
-      <CommandFlag>DynamicItemStart</CommandFlag>
-      <CommandFlag>DynamicVisibility</CommandFlag>
-      <CommandFlag>TextChanges</CommandFlag>
-      <!-- This text does not appear. -->
-      <Strings>
-        <ButtonText>Project</ButtonText>
-      </Strings>
-    </Button>
-   
+      <Button guid="guidDynamicMenuPackageCmdSet" id="cmdidMyDynamicStartCommand" priority="0x1000" >
+        <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" />
+        <CommandFlag>DynamicItemStart</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
+        <!-- This text does not appear. -->
+        <Strings>
+          <ButtonText>Project</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -88,28 +88,28 @@
     </Bitmaps>
   </Commands>
 
-   <CommandPlacements>
+  <CommandPlacements>
 
     <CommandPlacement guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" priority="0x0600">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
     </CommandPlacement>
 
-   
+
   </CommandPlacements>
-    
+
   <Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidDynamicMenuPackage" value="{6ca17756-36af-4324-a54a-6cfa5d5d066b}" />
 
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidDynamicMenuPackageCmdSet" value="{acac0ca9-d496-4208-9d28-07e6c887f79b}">
-        <IDSymbol name="MyToolbarItemGroup" value="0x1020" />
-        <IDSymbol name="MyMenuControllerGroup" value="0x1025" />
-        <IDSymbol name="MyMenuController" value ="0x1030"/>
-        <!-- NOTE: The following command expands at run time to some number of ids.
+      <IDSymbol name="MyToolbarItemGroup" value="0x1020" />
+      <IDSymbol name="MyMenuControllerGroup" value="0x1025" />
+      <IDSymbol name="MyMenuController" value ="0x1030"/>
+      <!-- NOTE: The following command expands at run time to some number of ids.
          Try not to place command ids after it (e.g. 0x0105, 0x0106).
          If you must add a command id after it, make the gap very large (e.g. 0x200) -->
-        <IDSymbol name="cmdidMyDynamicStartCommand" value="0x0104" />
+      <IDSymbol name="cmdidMyDynamicStartCommand" value="0x0104" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{84d382fc-c963-4f5c-97c1-5e703c16407f}" >
