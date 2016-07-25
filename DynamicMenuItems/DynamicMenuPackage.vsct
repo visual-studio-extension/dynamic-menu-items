@@ -7,13 +7,13 @@
       <Group guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" priority="0x0600" >
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
-      <Group guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" priority="0x0600" >
-        <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuController" />
+      <Group guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuControllerGroup" priority="0x0600" >
+        <Parent guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuController" />
       </Group>
     </Groups>
 
     <Menus>
-      <Menu guid="guidDynamicMenuPackageCmdSet" id="MyMenuController" priority="0x1000" type="Menu">
+      <Menu guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuController" priority="0x1000" type="Menu">
         <Parent guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -23,7 +23,7 @@
     </Menus>
     <Buttons>
       <Button guid="guidDynamicMenuPackageCmdSet" id="DynamicStartCommand" priority="0x1000" >
-        <Parent guid="guidDynamicMenuPackageCmdSet" id="MyMenuControllerGroup" />
+        <Parent guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuControllerGroup" />
         <CommandFlag>DynamicItemStart</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <CommandFlag>TextChanges</CommandFlag>
@@ -53,8 +53,8 @@
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidDynamicMenuPackageCmdSet" value="{acac0ca9-d496-4208-9d28-07e6c887f79b}">
       <IDSymbol name="MyToolbarItemGroup" value="0x1020" />
-      <IDSymbol name="MyMenuControllerGroup" value="0x1025" />
-      <IDSymbol name="MyMenuController" value ="0x1030"/>
+      <IDSymbol name="DynamicMenuControllerGroup" value="0x1025" />
+      <IDSymbol name="DynamicMenuController" value ="0x1030"/>
       <!-- NOTE: The following command expands at run time to some number of ids.
          Try not to place command ids after it (e.g. 0x0105, 0x0106).
          If you must add a command id after it, make the gap very large (e.g. 0x200) -->

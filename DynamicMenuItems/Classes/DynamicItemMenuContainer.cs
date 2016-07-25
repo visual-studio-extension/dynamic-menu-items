@@ -13,7 +13,7 @@ namespace DynamicMenuItems.Classes
         private List<Tuple<int, string, string>> _menuItems;
 
         public DynamicItemMenuContainer(OleMenuCommandService mcs, EnvDTE80.DTE2 dte, List<Tuple<int, string, string>> menuItems)
-            : base(Callback, new CommandID(Guid.Parse(DynamicMenuPackageGuids.GuidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.MyMenuController))
+            : base(Callback, new CommandID(Guid.Parse(DynamicMenuPackageGuids.GuidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.DynamicMenuController))
         {
             this._dte = dte;
             this._menuItems = menuItems;
@@ -23,14 +23,14 @@ namespace DynamicMenuItems.Classes
 
         private void DynamicItemMenuContainer_BeforeQueryStatus(object sender, EventArgs e)
         {
-            UIHierarchy uih = this._dte.ToolWindows.SolutionExplorer;
-            Array selectedItems = (Array)uih.SelectedItems;
-            UIHierarchyItem selectedItem = selectedItems.GetValue(0) as UIHierarchyItem;
+            var uih = this._dte.ToolWindows.SolutionExplorer;
+            var selectedItems = (Array)uih.SelectedItems;
+            var selectedItem = selectedItems.GetValue(0) as UIHierarchyItem;
             var testName = "";
-            ProjectItem prjItem = selectedItem.Object as ProjectItem;
+            var prjItem = selectedItem.Object as ProjectItem;
             if (prjItem == null)
             {
-                Project prj = selectedItem.Object as Project;
+                var prj = selectedItem.Object as Project;
 
                 if (prj == null)
                 {
