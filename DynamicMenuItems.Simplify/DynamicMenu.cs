@@ -1,5 +1,4 @@
-﻿using DynamicMenuItems.Classes;
-using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,12 @@ using System.ComponentModel.Design;
 
 namespace DynamicMenuItems
 {
+    class Guids
+    {
+        public static readonly Guid GuidDynamicMenuPackageCmdSet = new Guid("acac0ca9-d496-4208-9d28-07e6c887f79b");  // get the GUID from the .vsct file
+        public const int DynamicStartButton = 0x0104;
+    }
+
     internal sealed class DynamicMenu
     {
         private static List<OleMenuCommand> _commands;
@@ -24,7 +29,7 @@ namespace DynamicMenuItems
             var commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var commandId = new CommandID(new Guid(DynamicMenuPackageGuids.GuidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.DynamicStartCommand);
+                var commandId = new CommandID(Guids.GuidDynamicMenuPackageCmdSet, Guids.DynamicStartButton);
                 var command = new OleMenuCommand(DynamicStartCommandCallback, commandId);
                 command.Visible = false;
                 command.BeforeQueryStatus += DynamicStartBeforeQueryStatus;
@@ -60,11 +65,10 @@ namespace DynamicMenuItems
                     "Hello C"
                 };
 
-
             var j = 1;
             foreach (var ele in list)
             {
-                var menuCommandID = new CommandID(new Guid(DynamicMenuPackageGuids.GuidDynamicMenuPackageCmdSet), (int)DynamicMenuPackageGuids.DynamicStartCommand + j++);
+                var menuCommandID = new CommandID(Guids.GuidDynamicMenuPackageCmdSet, Guids.DynamicStartButton + j++);
                 var command = new OleMenuCommand(this.DynamicStartCommandCallback, menuCommandID);
                 command.Text = "Cake: " + ele;
                 command.BeforeQueryStatus += (x, y) => { (x as OleMenuCommand).Visible = true; };

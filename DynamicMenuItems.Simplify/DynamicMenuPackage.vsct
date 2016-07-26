@@ -7,13 +7,13 @@
       <Group guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" priority="0x0600" >
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
-      <Group guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuControllerGroup" priority="0x0600" >
-        <Parent guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuController" />
+      <Group guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuGroup" priority="0x0600" >
+        <Parent guid="guidDynamicMenuPackageCmdSet" id="DynamicMenu" />
       </Group>
     </Groups>
 
     <Menus>
-      <Menu guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuController" priority="0x1000" type="Menu">
+      <Menu guid="guidDynamicMenuPackageCmdSet" id="DynamicMenu" priority="0x1000" type="Menu">
         <Parent guid="guidDynamicMenuPackageCmdSet" id="MyToolbarItemGroup" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -22,8 +22,8 @@
       </Menu>
     </Menus>
     <Buttons>
-      <Button guid="guidDynamicMenuPackageCmdSet" id="DynamicStartCommand" priority="0x1000" >
-        <Parent guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuControllerGroup" />
+      <Button guid="guidDynamicMenuPackageCmdSet" id="DynamicStartButton" priority="0x1000" >
+        <Parent guid="guidDynamicMenuPackageCmdSet" id="DynamicMenuGroup" />
         <CommandFlag>DynamicItemStart</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <CommandFlag>TextChanges</CommandFlag>
@@ -53,12 +53,12 @@
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidDynamicMenuPackageCmdSet" value="{acac0ca9-d496-4208-9d28-07e6c887f79b}">
       <IDSymbol name="MyToolbarItemGroup" value="0x1020" />
-      <IDSymbol name="DynamicMenuControllerGroup" value="0x1025" />
-      <IDSymbol name="DynamicMenuController" value ="0x1030"/>
+      <IDSymbol name="DynamicMenuGroup" value="0x1025" />
+      <IDSymbol name="DynamicMenu" value ="0x1030"/>
       <!-- NOTE: The following command expands at run time to some number of ids.
          Try not to place command ids after it (e.g. 0x0105, 0x0106).
          If you must add a command id after it, make the gap very large (e.g. 0x200) -->
-      <IDSymbol name="DynamicStartCommand" value="0x0104" />
+      <IDSymbol name="DynamicStartButton" value="0x0104" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{84d382fc-c963-4f5c-97c1-5e703c16407f}" >
